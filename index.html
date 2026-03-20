@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#3b0a45" />
+  <title>Eid Mubarak Javeria Maheen</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      overflow: hidden;
+      color: #ffffff;
+      background: linear-gradient(160deg, #170222, #4a0d4f, #7d1b5c);
+      position: relative;
+    }
+
+    .bg, .hearts, .sparkles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .star, .heart, .sparkle {
+      position: absolute;
+      opacity: 0.85;
+      animation: rise linear infinite;
+    }
+
+    .star {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 8px #fff;
+    }
+
+    .heart {
+      font-size: 14px;
+      color: #ff9cc8;
+      text-shadow: 0 0 8px rgba(255,156,200,0.4);
+    }
+
+    .sparkle {
+      font-size: 12px;
+      color: #ffd166;
+      text-shadow: 0 0 8px rgba(255,209,102,0.7);
+    }
+
+    @keyframes rise {
+      from { transform: translateY(100vh) scale(0.8); }
+      to { transform: translateY(-15vh) scale(1.2); }
+    }
+
+    .moon {
+      position: fixed;
+      top: 24px;
+      right: 20px;
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #fffbd8, #ffe28d 60%, #f3c852 100%);
+      box-shadow: 0 0 24px rgba(255, 226, 136, 0.6);
+    }
+
+    .moon::after {
+      content: "";
+      position: absolute;
+      top: 6px;
+      left: 18px;
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: linear-gradient(160deg, #170222, #4a0d4f);
+    }
+
+    .app {
+      position: relative;
+      z-index: 2;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    .phone {
+      width: 100%;
+      max-width: 420px;
+      height: 92vh;
+      max-height: 820px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 28px;
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.30);
+      position: relative;
+    }
+
+    .slides {
+      display: flex;
+      width: 500%;
+      height: 100%;
+      transition: transform 0.45s ease;
+    }
+
+    .slide {
+      width: 20%;
+      height: 100%;
+      padding: 22px 16px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .center { text-align: center; }
+
+    h1 {
+      font-size: 38px;
+      line-height: 1.15;
+      color: #ffe7a1;
+      margin-top: 18px;
+      margin-bottom: 10px;
+      text-shadow: 0 0 12px rgba(255,209,102,0.3);
+    }
+
+    h2 {
+      font-size: 30px;
+      line-height: 1.2;
+      color: #ffd7ea;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .name {
+      font-size: 27px;
+      font-weight: bold;
+      color: #ffd166;
+      margin-bottom: 14px;
+      text-align: center;
+      text-shadow: 0 0 10px rgba(255,209,102,0.25);
+    }
+
+    .box {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+    }
+
+    .love-card {
+      background: linear-gradient(160deg, rgba(255,255,255,0.16), rgba(255,255,255,0.08));
+      border: 1px solid rgba(255,255,255,0.20);
+      border-radius: 26px;
+      padding: 20px 16px;
+      box-shadow: 0 16px 34px rgba(0,0,0,0.18), 0 0 24px rgba(255,141,194,0.14);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .premium-card::after {
+      content: '';
+      position: absolute;
+      left: -20px;
+      right: -20px;
+      bottom: -35px;
+      height: 80px;
+      background: radial-gradient(circle, rgba(255,209,102,0.18), transparent 70%);
+      filter: blur(10px);
+    }
+
+    .love-card {
+      background: linear-gradient(160deg, rgba(255,255,255,0.14), rgba(255,255,255,0.07));
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 24px;
+      padding: 18px 14px;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.18), 0 0 20px rgba(255,141,194,0.12);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .love-card::before {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+      top: -40px;
+      right: -30px;
+      filter: blur(8px);
+    }
+
+    .love-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #ffe7b0;
+      margin-bottom: 10px;
+      letter-spacing: 0.4px;
+    }
+
+    .love-main-heart {
+      font-size: 42px;
+      margin: 6px 0 12px;
+      animation: pulse 1.8s infinite;
+      text-shadow: 0 0 16px rgba(255,156,200,0.35);
+    }
+
+    .love-lines p {
+      font-size: 16px;
+      line-height: 1.85;
+      color: #fff8fc;
+      margin-bottom: 8px;
+    }
+
+    .love-lines .eid-line {
+      margin-top: 8px;
+      font-size: 17px;
+      color: #ffe7a1;
+      font-weight: bold;
+    }
+
+    .love-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #ffe7b0;
+      margin-bottom: 10px;
+    }
+
+    .typewriter-wrap {
+      min-height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .typewriter {
+      font-size: 16px;
+      line-height: 1.9;
+      color: #fff8fc;
+      white-space: pre-line;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      animation: blink 0.9s infinite;
+    }
+
+    @keyframes blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+
+    .message {
+      font-size: 15px;
+      line-height: 1.9;
+      color: #fff8fc;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 14px 10px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover { transform: translateY(-2px); }
+
+    .icon {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: bold;
+      color: #fff1be;
+      margin-bottom: 4px;
+    }
+
+    .card-text {
+      font-size: 12px;
+      line-height: 1.6;
+      color: #fff8fc;
+    }
+
+    .quote {
+      font-size: 28px;
+      line-height: 1.4;
+      text-align: center;
+      color: #ffe1ee;
+      padding: 10px 4px;
+    }
+
+    .heart-big {
+      font-size: 58px;
+      text-align: center;
+      margin-bottom: 10px;
+      animation: pulse 1.6s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .signature-box {
+      text-align: center;
+      position: relative;
+    }
+
+    .from-line {
+      margin-top: 14px;
+      font-size: 16px;
+      color: #ffdca7;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: revealUp 1.2s ease forwards;
+      animation-delay: 0.7s;
+    }
+
+    .from-name {
+      display: block;
+      font-size: 26px;
+      font-weight: bold;
+      color: #ffb3d7;
+      margin-top: 4px;
+      text-shadow: 0 0 12px rgba(255,179,215,0.3);
+      opacity: 0;
+      transform: translateY(16px) scale(0.95);
+      animation: revealUp 1.2s ease forwards;
+      animation-delay: 1.2s;
+    }
+
+    @keyframes revealUp {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .audio-bar {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 5;
+      display: flex;
+      gap: 8px;
+    }
+
+    .audio-btn {
+      border: none;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.14);
+      color: #fff;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: bold;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .hint {
+      text-align: center;
+      font-size: 12px;
+      color: #ffe5f0;
+      opacity: 0.9;
+      margin-top: 2px;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,141,194,0.16), transparent 68%);
+      filter: blur(16px);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .hint {
+      text-align: center;
+      font-size: 12px;
+      color: #ffe5f0;
+      opacity: 0.9;
+      margin-top: 2px;
+    }
+
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+    }
+
+    .dot.active {
+      width: 24px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, #ffd166, #ff8dc2);
+    }
+
+    .nav {
+      display: flex;
+      gap: 10px;
+    }
+
+    button.nav-btn {
+      flex: 1;
+      border: none;
+      border-radius: 999px;
+      padding: 14px 16px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn-back {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .btn-next {
+      background: linear-gradient(90deg, #ff95c8, #ff4f93);
+      color: #fff;
+    }
+
+    .btn-special {
+      background: linear-gradient(90deg, #ffd166, #ff9acb);
+      color: #3a1631;
+    }
+
+    button.nav-btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+      padding: 16px;
+    }
+
+    .popup-box {
+      width: 100%;
+      max-width: 360px;
+      background: linear-gradient(160deg, #4a0d4f, #7a1d5d);
+      border-radius: 24px;
+      padding: 22px 16px;
+      border: 1px solid rgba(255,255,255,0.14);
+      text-align: center;
+      box-shadow: 0 16px 35px rgba(0,0,0,0.32);
+    }
+
+    .popup-title {
+      font-size: 28px;
+      color: #ffe49f;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .popup-text {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #fff8fc;
+      margin-bottom: 14px;
+    }
+
+    @media (max-width: 360px) {
+      h1 { font-size: 32px; }
+      h2 { font-size: 26px; }
+      .name { font-size: 22px; }
+      .message, .typewriter { font-size: 14px; }
+      .quote { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg" id="stars"></div>
+  <div class="hearts" id="hearts"></div>
+  <div class="sparkles" id="sparkles"></div>
+  <div class="moon"></div>
+
+  <div class="app">
+    <div class="phone" id="phone">
+      
+
+      <div class="slides" id="slides">
+        <div class="slide">
+          <div class="center">
+            <div class="hero-glow"></div>
+            <h1>Eid Mubarak</h1>
+            <div class="name">Javeria Maheen ❤️</div>
+            <div class="love-card premium-card">
+              <div class="love-title">A Special Love Card For You</div>
+              <div class="love-main-heart">💖</div>
+              <div class="love-lines">
+                <p>Meri pyari <b>Javeria Maheen</b>,</p>
+                <p>Tum meri zindagi ki sabse khoobsurat kahani ho.</p>
+                <p>Tumhari muskurahat meri duniya ko roshan kar deti hai.</p>
+                <p>Har Eid tumhare sath aur bhi zyada haseen lagti hai.</p>
+                <p class="eid-line">Eid Mubarak meri jaan ✨</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="hint">Swipe left ya Next press karo ✨</div>
+            <div class="dots" id="dots1"></div>
+            <div class="nav">
+              <button class="nav-btn btn-back" disabled>Back</button>
+              <button class="nav-btn btn-next" onclick="nextSlide()">Next</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div>
+            <h2>My Love</h2>
+            <div class="box message">
+              <p><b>Javeria Maheen,</b> tum meri zindagi ka sabse khoobsurat hissa ho. Tumhari muskurahat meri khushi hai, tumhara sath mera sukoon hai, aur tum meri har dua ka sabse pyara jawab ho.</p>
+              <p style="margin-top:10px;">Aaj Eid ke is pyare din par main bas itna kehna chahta hoon ke tumhare bina meri duniya adhoori hai.</p>
+            </div>
+          </div>
+          <div>
+            <div class="dots" id="dots2"></div>
+            <div class="nav">
+              <button class="nav-btn btn-back" onclick="prevSlide()">Back</button>
+              <button class="nav-btn btn-next" onclick="nextSlide()">Next</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div>
+            <h2>Duas For You</h2>
+            <div class="grid">
+              <div class="card"><div class="icon">🌙</div><div class="card-title">Noor</div><div class="card-text">Allah tumhari zindagi ko roshan rakhe.</div></div>
+              <div class="card"><div class="icon">💖</div><div class="card-title">Love</div><div class="card-text">Hamari mohabbat hamesha mazboot rahe.</div></div>
+              <div class="card"><div class="icon">🤲</div><div class="card-title">Dua</div><div class="card-text">Tumhari har achi wish qabool ho.</div></div>
+              <div class="card"><div class="icon">🌹</div><div class="card-title">Khushi</div><div class="card-text">Tum hamesha muskuraati raho.</div></div>
+            </div>
+          </div>
+          <div>
+            <div class="dots" id="dots3"></div>
+            <div class="nav">
+              <button class="nav-btn btn-back" onclick="prevSlide()">Back</button>
+              <button class="nav-btn btn-next" onclick="nextSlide()">Next</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div>
+            <div class="box quote">“Tum sirf meri wife nahi, meri duniya, meri khushi aur meri sabse pyari dua ho.”</div>
+            <div class="box message" style="margin-top:12px;">
+              Is Eid par meri sabse pyari wish yeh hai ke tum hamesha meri zindagi mein isi tarah muskuraati raho. Tumhare sath har din ek celebration lagta hai.
+            </div>
+          </div>
+          <div>
+            <div class="dots" id="dots4"></div>
+            <div class="nav">
+              <button class="nav-btn btn-back" onclick="prevSlide()">Back</button>
+              <button class="nav-btn btn-next" onclick="nextSlide()">Next</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div>
+            <div class="heart-big">💘</div>
+            <h2>Forever Yours</h2>
+            <div class="box message signature-box">
+              <p><b>Eid Mubarak meri jaan, Javeria Maheen.</b></p>
+              <p style="margin-top:10px;">Main tumse bohat zyada mohabbat karta hoon.</p>
+              <p style="margin-top:10px;">May Allah bless our love, our home, and every beautiful moment together.</p>
+              <div class="from-line">With all my heart</div>
+              <span class="from-name">From Zohaib ❤️</span>
+            </div>
+          </div>
+          <div>
+            <div class="dots" id="dots5"></div>
+            <div class="nav">
+              <button class="nav-btn btn-back" onclick="prevSlide()">Back</button>
+              <button class="nav-btn btn-special" onclick="showPopup()">Special Message</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup" id="popup">
+    <div class="popup-box">
+      <div class="popup-title">For My Javeria 💕</div>
+      <div class="popup-text">Tum meri zindagi ki sabse pyari smile ho. Eid ki asli khushi mere liye tum ho. Allah tumhein hamesha khush rakhe aur hamari mohabbat ko hamesha barkat de.</div>
+      <button class="nav-btn btn-special" onclick="closePopup()">Close</button>
+    </div>
+  </div>
+
+  
+
+  <script>
+    var currentSlide = 0;
+    var totalSlides = 5;
+    var slides = document.getElementById('slides');
+    var startX = 0;
+    var endX = 0;
+    var typeText = 'Meri pyari Javeria...\nTum meri zindagi ki sabse khoobsurat kahani ho.\nHar Eid tumhare sath aur bhi special ho jati hai.\n\nEid Mubarak meri jaan 💕';
+    var typeIndex = 0;
+    
+
+    function updateSlider() {
+      slides.style.transform = 'translateX(-' + (currentSlide * 20) + '%)';
+      renderDots();
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides - 1) {
+        currentSlide++;
+        updateSlider();
+      }
+      
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlider();
+      }
+      
+    }
+
+    function renderDots() {
+      for (var d = 1; d <= totalSlides; d++) {
+        var holder = document.getElementById('dots' + d);
+        holder.innerHTML = '';
+        for (var i = 0; i < totalSlides; i++) {
+          var dot = document.createElement('div');
+          dot.className = (i === currentSlide) ? 'dot active' : 'dot';
+          holder.appendChild(dot);
+        }
+      }
+    }
+
+    function showPopup() {
+      document.getElementById('popup').style.display = 'flex';
+      launchConfetti();
+      
+    }
+
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+
+    function random(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function addFloating(containerId, className, symbol, count) {
+      var container = document.getElementById(containerId);
+      for (var i = 0; i < count; i++) {
+        var el = document.createElement('div');
+        el.className = className;
+        if (symbol) el.innerHTML = symbol;
+        el.style.left = Math.random() * 100 + 'vw';
+        el.style.animationDuration = random(7, 14) + 's';
+        el.style.animationDelay = random(-10, 0) + 's';
+        el.style.opacity = random(0.3, 0.9);
+        container.appendChild(el);
+      }
+    }
+
+    function launchConfetti() {
+      var icons = ['✨','💖','🌙','💫','🎉'];
+      for (var i = 0; i < 22; i++) {
+        var c = document.createElement('div');
+        c.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+        c.style.position = 'fixed';
+        c.style.left = Math.random() * 100 + 'vw';
+        c.style.top = '-20px';
+        c.style.fontSize = random(16, 28) + 'px';
+        c.style.transition = 'transform 3s linear, opacity 3s ease';
+        c.style.zIndex = '99';
+        c.style.pointerEvents = 'none';
+        document.body.appendChild(c);
+        setTimeout((function(el){
+          return function(){
+            el.style.transform = 'translateY(' + (window.innerHeight + 60) + 'px) rotate(' + random(180, 720) + 'deg)';
+            el.style.opacity = '0.15';
+          };
+        })(c), 20);
+        setTimeout((function(el){
+          return function(){ el.remove(); };
+        })(c), 3200);
+      }
+    }
+).catch(function(){
+          musicBtn.innerHTML = 'Tap Music';
+        });
+      }
+    }
+
+    function toggleMusic() {
+      if (audio.paused) {
+        audio.play().then(function(){
+          musicStarted = true;
+          musicBtn.innerHTML = 'Music Off';
+        }).catch(function(){
+          musicBtn.innerHTML = 'Tap Again';
+        });
+      } else {
+        audio.pause();
+        musicBtn.innerHTML = 'Music On';
+      }
+    }
+
+    var phone = document.getElementById('phone');
+    phone.addEventListener('touchstart', function(e) {
+      startX = e.changedTouches[0].screenX;
+      
+    }, { passive: true });
+
+    phone.addEventListener('touchend', function(e) {
+      endX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+      var diff = endX - startX;
+      if (diff < -40) {
+        nextSlide();
+      } else if (diff > 40) {
+        prevSlide();
+      }
+    }
+
+    document.getElementById('popup').addEventListener('click', function(e) {
+      if (e.target.id === 'popup') closePopup();
+    });
+
+    addFloating('stars', 'star', '', 60);
+    addFloating('hearts', 'heart', '❤', 14);
+    addFloating('sparkles', 'sparkle', '✦', 20);
+    renderDots();
+  </script>
+</body>
+</html>
